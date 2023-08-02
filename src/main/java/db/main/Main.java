@@ -10,7 +10,8 @@ public class Main {
 
     private void run() {
         try (Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/demo3107", "student", "123")) {
-            try (PreparedStatement ps = connection.prepareStatement("select * from student");
+            String sql = "select * from student";
+            try (PreparedStatement ps = connection.prepareStatement(sql);
                  ResultSet resultSet = ps.executeQuery()) {
                 while (resultSet.next()) {
                     int id = resultSet.getInt("id");
